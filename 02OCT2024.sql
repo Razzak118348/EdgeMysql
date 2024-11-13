@@ -1,0 +1,131 @@
+USE EDGE;
+CREATE TABLE OrderDetails (
+    OrderDetailID INT PRIMARY KEY,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT
+);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity)
+VALUES
+(1, 10248, 11, 12),
+(2, 10248, 42, 10),
+(3, 10248, 72, 5),
+(4, 10249, 14, 9),
+(5, 10249, 51, 40),
+(6, 10250, 41, 10),
+(7, 10250, 51, 35),
+(8, 10250, 65, 15),
+(9, 10251, 22, 6),
+(10, 10251, 57, 15),
+(11, 10251, 65, 20),
+(12, 10252, 20, 40),
+(13, 10252, 33, 25),
+(14, 10252, 60, 40),
+(15, 10253, 31, 20),
+(16, 10253, 39, 42),
+(17, 10253, 49, 40),
+(18, 10254, 24, 15),
+(19, 10254, 55, 21),
+(20, 10254, 74, 21),
+(21, 10255, 2, 20),
+(22, 10255, 16, 35),
+(23, 10255, 36, 25),
+(24, 10255, 59, 30),
+(25, 10256, 53, 15),
+(26, 10256, 77, 12),
+(27, 10257, 27, 25),
+(28, 10257, 39, 6),
+(29, 10257, 77, 15),
+(30, 10258, 2, 50),
+(31, 10258, 5, 65),
+(32, 10258, 32, 6),
+(33, 10259, 21, 10),
+(34, 10259, 37, 1),
+(35, 10260, 41, 16),
+(36, 10260, 57, 50),
+(37, 10260, 62, 15),
+(38, 10260, 70, 21),
+(39, 10261, 21, 20),
+(40, 10261, 35, 20),
+(41, 10262, 5, 12),
+(42, 10262, 7, 15),
+(43, 10262, 56, 2),
+(44, 10263, 16, 60),
+(45, 10263, 24, 28),
+(46, 10263, 30, 60),
+(47, 10263, 74, 36),
+(48, 10264, 2, 35),
+(49, 10264, 41, 25),
+(50, 10265, 17, 30);
+
+SELECT SUM(Quantity) FROM OrderDetails;
+SELECT SUM(Quantity) FROM OrderDetails WHERE ProductID=2;
+SELECT SUM(Quantity) AS total FROM OrderDetails;
+SELECT OrderID, SUM(Quantity) AS Total_Quantity FROM OrderDetails GROUP BY OrderID;
+SELECT SUM(Quantity * 10) FROM OrderDetails;
+-- THIS QUERY IS FOR PRODUCTS TABLE
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    SupplierID INT,
+    CategoryID INT,
+    Unit VARCHAR(50),
+    Price DECIMAL(10, 2)
+);
+INSERT INTO Productsorderdetailscustomers (ProductID, ProductName, SupplierID, CategoryID, Unit, Price) VALUES
+(1, 'Chais', 1, 1, '10 boxes x 20 bags', 18),
+(2, 'Chang', 1, 1, '24 - 12 oz bottles', 19),
+(3, 'Aniseed Syrup', 1, 2, '12 - 550 ml bottles', 10),
+(4, 'Chef Anton\'s Cajun Seasoning', 2, 2, '48 - 6 oz jars', 22),
+(5, 'Chef Anton\'s Gumbo Mix', 2, 2, '36 boxes', 21.35),
+(6, 'Grandma\'s Boysenberry Spread', 3, 2, '12 - 8 oz jars', 25),
+(7, 'Uncle Bob\'s Organic Dried Pears', 3, 7, '12 - 1 lb pkgs.', 30),
+(8, 'Northwoods Cranberry Sauce', 3, 2, '12 - 12 oz jars', 40),
+(9, 'Mishi Kobe Niku', 4, 6, '18 - 500 g pkgs.', 97),
+(10, 'Ikura', 4, 8, '12 - 200 ml jars', 31),
+(11, 'Queso Cabrales', 5, 4, '1 kg pkg.', 21),
+(12, 'Queso Manchego La Pastora', 5, 4, '10 - 500 g pkgs.', 38),
+(13, 'Konbu', 6, 8, '2 kg box', 6),
+(14, 'Tofu', 6, 7, '40 - 100 g pkgs.', 23.25),
+(15, 'Genen Shouyu', 6, 2, '24 - 250 ml bottles', 15.5),
+(16, 'Pavlova', 7, 3, '32 - 500 g boxes', 17.45),
+(17, 'Alice Mutton', 7, 6, '20 - 1 kg tins', 39),
+(18, 'Carnarvon Tigers', 7, 8, '16 kg pkg.', 62.5),
+(19, 'Teatime Chocolate Biscuits', 8, 3, '10 boxes x 12 pieces', 9.2),
+(20, 'Sir Rodney\'s Marmalade', 8, 3, '30 gift boxes', 81),
+(21, 'Sir Rodney\'s Scones', 8, 3, '24 pkgs. x 4 pieces', 10),
+(22, 'Gustaf\'s Knäckebröd', 9, 5, '24 - 500 g pkgs.', 21),
+(23, 'Tunnbröd', 9, 5, '12 - 250 g pkgs.', 9),
+(24, 'Guaraná Fantástica', 10, 1, '12 - 355 ml cans', 4.5),
+(25, 'NuNuCa Nuß-Nougat-Creme', 11, 3, '20 - 450 g glasses', 14),
+(26, 'Gumbär Gummibärchen', 11, 3, '100 - 250 g bags', 31.23),
+(27, 'Schoggi Schokolade', 11, 3, '100 - 100 g pieces', 43.9),
+(28, 'Rössle Sauerkraut', 12, 7, '25 - 825 g cans', 45.6),
+(29, 'Thüringer Rostbratwurst', 12, 6, '50 bags x 30 sausgs.', 123.79),
+(30, 'Nord-Ost Matjeshering', 13, 8, '10 - 200 g glasses', 25.89),
+(31, 'Gorgonzola Telino', 14, 4, '12 - 100 g pkgs', 12.5),
+(32, 'Mascarpone Fabioli', 14, 4, '24 - 200 g pkgs.', 32),
+(33, 'Geitost', 15, 4, '500 g', 2.5),
+(34, 'Sasquatch Ale', 16, 1, '24 - 12 oz bottles', 14),
+(35, 'Steeleye Stout', 16, 1, '24 - 12 oz bottles', 18),
+(36, 'Inlagd Sill', 17, 8, '24 - 250 g jars', 19),
+(37, 'Gravad lax', 17, 8, '12 - 500 g pkgs.', 26),
+(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles', 263.5),
+(39, 'Chartreuse verte', 18, 1, '750 cc per bottle', 18),
+(40, 'Boston Crab Meat', 19, 8, '24 - 4 oz tins', 18.4),
+(41, 'Jack\'s New England Clam Chowder', 19, 8, '12 - 12 oz cans', 9.65),
+(42, 'Singaporean Hokkien Fried Mee', 20, 5, '32 - 1 kg pkgs.', 14),
+(43, 'Ipoh Coffee', 20, 1, '16 - 500 g tins', 46),
+(44, 'Gula Malacca', 20, 2, '20 - 2 kg bags', 19.45),
+(45, 'Røgede sild', 21, 8, '1k pkg.', 9.5),
+(46, 'Spegesild', 21, 8, '4 - 450 g glasses', 12),
+(47, 'Zaanse koeken', 22, 3, '10 - 4 oz boxes', 9.5),
+(48, 'Chocolade', 22, 3, '10 pkgs.', 12.75),
+(49, 'Maxilaku', 23, 3, '24 - 50 g pkgs.', 20),
+(50, 'Valkoinen suklaa', 23, 3, '12 - 100 g bars', 16.25);
+
+SELECT AVG(Price) FROM Products;
+SELECT AVG(Price) FROM Products WHERE CategoryID = 1;
+SELECT AVG(Price) AS "average price" FROM Products;
+SELECT * FROM Products WHERE Price > (SELECT AVG(Price) FROM Products);
+SELECT AVG(Price) AS AveragePrice, CategoryID FROM Products GROUP BY CategoryID;
